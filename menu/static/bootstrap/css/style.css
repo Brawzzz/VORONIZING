@@ -1,0 +1,82 @@
+.container {
+    display: grid; 
+    grid-template-columns: 0fr 1fr 0fr; 
+    grid-template-rows: 1fr 0fr 0fr; 
+    gap: 0px 0px; 
+    grid-template-areas:
+
+    margin-left: 0.%;
+    margin-right: 1%;
+
+    width: 100%;
+    color: rgb(255, 255, 255);
+    
+    padding: 2%; 
+}
+  
+.default_images { 
+    grid-area: default_images;
+    
+    width: 100%;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    padding: 2%;
+
+    background-color: rgb(0, 0, 0);
+}
+.default_images label{
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.description{ 
+    text-align: center;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+
+    width: 100%;
+}
+  
+.parameters { 
+    grid-area: parameters; 
+
+    text-align: center;
+    color: rgb(255, 255, 255);
+    
+    width: 100%;
+
+    padding: 2%;
+
+    background-color: rgb(0, 0, 0);
+}
+.parameters input{
+    color: black;
+    border-radius: 5px;
+
+    width: auto;
+}
+  
+.submit { 
+    grid-area: submit; 
+    
+    text-align: center;
+
+    width: 100%;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    padding: 2%;
+    padding-bottom: 5%;
+
+    background-color: rgb(0, 0, 0);
+}
+
+.space { 
+    grid-area: space; 
+    width: 10px;
+}
+  
+  

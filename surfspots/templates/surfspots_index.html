@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Surf Spots</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'css/voronoi-map.ico' %}"/>
+
+        <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %} ">
+
+        <script src=" {% static 'bootstrap/js/bootstrap.js' %} "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    </head>
+
+    <body class="bg-light">
+
+        <header class="container-fluid bg-light mt-4">
+            <h1 style="text-align: center;
+                       font-weight: bold;
+                       font-family: 'Courier New', Courier, monospace;">
+                Surf Spots 
+            </h1>
+
+            <h3 style="text-align: center;
+                       font-weight: bold;
+                       font-family: 'Courier New', Courier, monospace;">
+                The Best Surf Condition in the World
+            </h3>
+        </header>
+
+        <br><br><br>
+
+        <div style="display: block" class="container-fluid p-4" id="default" name="default">
+            <div class="container-fluid bg-dark text-light p-4 rounded-5">
+
+                <h4 style="text-align: center;
+                           font-weight: bold;
+                           font-family: 'Courier New', Courier, monospace;">
+                    Choose a period of time for the predictions
+                </h4>
+
+                <br>
+
+                <form method="post" enctype="multipart/form-data" id="form">
+
+                    {% csrf_token %}
+
+                    <div class="container-fluid bg-dark fs-5 text-center ml-5 mt-4 p-1">
+                        <div class="mb-3">
+                            <label for="images"
+                                    class="form-label"
+                                    style="font-weight: bold;
+                                           font-family: 'Courier New', Courier, monospace;">
+                                    Period of Time :
+                            </label>
+
+                            <div class="p-2">
+                                <select class="form-select" 
+                                        aria-label="Period Time Prediction"
+                                        style="text-align: center;
+                                               font-weight: bold;
+                                               font-family: 'Courier New', Courier, monospace;"
+                                        id="input_time">
+                                    <option selected value="3">3h</option>
+                                    <option value="6">6h</option>
+                                    <option value="12">12h</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="container-fluid bg-dark text-center p-2 rounded-5">
+                        <button type="submit" class="btn btn-outline-light"
+                                style="font-weight: bold; font-family: 'Courier New', Courier, monospace;"
+                                id="submit_btn"
+                                name="submit_btn">
+                            PREDICTION
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        
+        <script>
+            var submit_btn = document.getElementById("submit_btn");
+            var form = document.getElementById("form");
+
+            submit_btn.addEventListener('click', function(event) {
+                
+                var input_time = document.getElementById("input_time");
+
+                form.submit();
+
+            });
+        </script>
+
+
+    </body>
+</html>

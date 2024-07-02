@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voronizing</title>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'css/voronoi-map.ico' %}"/>
+
+    <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %} ">
+    <link rel="stylesheet" href=" {% static 'css/spinner.css' %} ">
+
+    <script src=" {% static 'bootstrap/js/bootstrap.js' %} "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+
+<body class="bg-light">
+
+    <header class="container-fluid bg-dark p-4">
+        <h1 style="color: white;
+                   text-align: center;
+                   font-weight: bold;
+                   font-family: 'Courier New', Courier, monospace;">
+            VORONIZING
+        </h1>
+    </header>
+
+    <div class="container-fluid mt-3 p-4">
+
+        <div class="row">
+
+            <div class="container-fluid col-sm-2 mb-3 mb-sm-0">
+                <div class="card" style="text-align: center;">
+
+                    <img src="{% static 'img/card_voronizing_art.jpg' %}" class="card-img-top" alt="Voronizing Art">
+                    <div class="card-body">
+                        <h5 class="card-title">Voronizing Art</h5>
+                        <p class="card-text">Apply a voronoi filter to your favorite paintings or your own images</p>
+                        <a href="menu/" class="btn btn-outline-dark">Voronizing Art</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class=" container-fluid col-sm-2 mb-3 mb-sm-0">
+                <div class="card" style="text-align: center;">
+
+                    <img src="{% static 'img/card_voronoi_map.png' %}" class="card-img-top" alt="Voronizing Map">
+                    <div class="card-body">
+                        <h5 class="card-title">Voronizing Map</h5>
+                        <p class="card-text">Compute a voronoi diagram with specific data as seeds (The train station by exemple)</p>
+                        <a href="future-projects" class="btn btn-outline-dark">Voronizing Map</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container-fluid col-sm-2 mb-3 mb-sm-0">
+                <div class="card" style="text-align: center;">
+
+                    <img src="{% static 'img/card_voronoi_live.png' %}" class="card-img-top" alt="Voronizing Art">
+                    <div class="card-body">
+                        <h5 class="card-title">Voronizing Live</h5>
+                        <p class="card-text">Apply a voronoi filter to a live video</p>
+                        <a href="future-projects" class="btn btn-outline-dark">Voronizing Live</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

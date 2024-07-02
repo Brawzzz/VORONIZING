@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>SurfSpots</title>
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'css/voronoi-map.ico' %}"/>
+
+        <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %} ">
+
+        <script src=" {% static 'bootstrap/js/bootstrap.js' %} "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    </head>
+
+    <body class="bg-light">
+
+        <header class="container-fluid bg-light mt-4">
+            <h1 style="color: black;
+                       text-align: center;
+                       font-weight: bold;
+                       font-family: 'Courier New', Courier, monospace;"> 
+                <a href="https://www.voronoi.voronizing.fr/surfspots/" 
+                   style="color: black;
+                          text-align: center;
+                          font-weight: bold;
+                          font-family: 'Courier New', Courier, monospace;">
+                    Surf Spots
+                </a>
+            </h1>
+        </header>
+
+        <div class="container-fluid bg-light mt-3 ml-2">    
+
+            <h1>RANKING OF SPOTS</h1>
+        </div>
+
+    </body>
+
+</html>

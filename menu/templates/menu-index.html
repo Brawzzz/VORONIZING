@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Voronizing</title>
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'css/voronoi-map.ico' %}"/>
+
+        <link rel="stylesheet" href=" {% static 'bootstrap/css/bootstrap.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/spinner.css' %} ">
+
+        <script src=" {% static 'bootstrap/js/bootstrap.js' %} "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    </head>
+
+    <body class="bg-light">
+
+        <header class="container-fluid bg-light mt-4">
+            <h1 style="text-align: center;
+                       font-weight: bold;
+                       font-family: 'Courier New', Courier, monospace;">
+                <a href="https://www.voronoi.voronizing.fr/" 
+                   style="color: black;
+                        text-align: center;
+                        font-weight: bold;
+                        font-family: 'Courier New', Courier, monospace;">
+                    VORONIZING 
+                </a>
+            </h1>
+        </header>
+
+        <div style="display: block" class="container-fluid p-4" id="default" name="default">
+            <div class="container-fluid bg-dark text-light p-4 rounded-5">
+
+                <h4 style="text-align: center;
+                           font-weight: bold;
+                           font-family: 'Courier New', Courier, monospace;">
+                    Chose a painting or your own image
+                </h4>
+
+                <br>
+
+                <form method="post" enctype="multipart/form-data" id="voronizing_form">
+
+                    {% csrf_token %}
+
+                    <div class="container-fluid bg-dark fs-5 text-center ml-5 mt-4 p-1">
+                        <div class="mb-3">
+                             <label for="images"
+                                    class="form-label"
+                                    style="font-weight: bold;
+                                           font-family: 'Courier New', Courier, monospace;">
+                                    Image :
+                             </label>
+                            <div class="p-2">
+                                <input type="file"
+                                       class="form-control"
+                                       id="images"
+                                       name="images"
+                                       accept="image/jpg, image/jpeg, image/png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid bg-dark p-4">
+                        <hr>
+                        <br>
+                        <h4 style="text-align: center;
+                                   font-weight: bold;
+                                   font-family: 'Courier New', Courier, monospace;">
+                            Set a number of points. More points more precision
+                        </h4>
+
+                        <div class="container-fluid bg-dark fs-5 text-center ml-5 mt-5 p-4">
+                            <label for="seeds"
+                                   style="font-weight: bold; font-family: 'Courier New', Courier, monospace;">
+                                Seeds :
+                            </label>
+                            <input type="number" class="form-label" id="seeds" name="seeds" min="2" max="2500" required>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid bg-dark text-center p-2 rounded-5">
+                        <button type="submit" class="btn btn-outline-light"
+                                style="font-weight: bold; font-family: 'Courier New', Courier, monospace;"
+                                id="submit_btn"
+                                name="submit_btn">
+                            VORONIZING
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div style="display: none" class="container-fluid bg-light mt-4 p-5" id="loading" name="loading">
+
+            <div class="container-fluid mb-4">
+                <h2 style="text-align: center;
+                        font-weight: bold;
+                        font-family: 'Courier New', Courier, monospace;">
+                    This operation can take few minutes ...
+                </h2>
+            </div>
+
+            <br>
+
+            <div class="contain_spinner container-fluid mt-4 p-2">
+                <div class="loader" id="loader-1"></div>
+            </div>
+        </div>
+
+        <script>
+            var submit_btn = document.getElementById("submit_btn");
+            var default_div = document.getElementById("default");
+            var loading = document.getElementById("loading");
+            var voronizing_form = document.getElementById("voronizing_form");
+
+            submit_btn.addEventListener('click', function(event) {
+                event.preventDefault();
+                var images_input = document.getElementById("images");
+                var seeds_input = document.getElementById("seeds");
+                var error_msg = "";
+
+                if (!images_input.value) {
+                    error_msg += "\nPlease select an image.\n\n";
+                }
+
+                if (!seeds_input.value) {
+                    error_msg += "Please set the number of seeds.\n\n";
+                }
+                else {
+                    var seeds_value = parseInt(seeds_input.value);
+                    if (isNaN(seeds_value) || seeds_value < 2 || seeds_value > 2500) {
+                        error_msg += "Invalid number of seeds. Please enter a number between 2 and 2500.\n";
+                    }
+                }
+
+                if (error_msg) {
+                    alert(error_msg);
+                    return;
+                }
+
+                loading.style.display = "block";
+                default_div.style.display = "none";
+
+                voronizing_form.submit();
+            });
+        </script>
+
+    </body>
+</html>
